@@ -6,6 +6,7 @@ def open_question(csv_file):
         opened_file = f.read()
         opened_file = opened_file.split('\n')
 
+
         for lines in opened_file:
             print(lines)
 
