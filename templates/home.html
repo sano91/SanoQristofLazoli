@@ -1,8 +1,22 @@
-{% extends 'layout.html' %}
+<!DOCtype html>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>HOME</h1>
+    <table>
+        <h1>Home</h1>
+        {% for i in headers %}
+        <th>{{ i }}</th>
+        {% for i in range(3) %}<tr><td>{{ table["submission_time"] }}</td><td>{{ table["view_number"] }}</td><td></td></tr>
 
-{% block body %}
 
-    <h1>Proba 123</h1>
-    <p class="lead">Proba szoveg a head alatt</p>
 
-{% endblock %}
+
+    </table>
+</body>
+</html>
