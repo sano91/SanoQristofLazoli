@@ -1,5 +1,5 @@
 import csv
-
+from datetime import datetime
 '''
 def open_question(csv_file):
     with open(csv_file, "r") as f:
@@ -16,17 +16,24 @@ def write_to_csv(csv_file, data):
     return None
 
 '''
-def get_data_from_csv(csv_file="sample_data/question.csv", id=None):
+def get_data_from_csv(csv_file, id=None):
     with open(csv_file, "r") as f:
         reader = csv.DictReader(f)
         table = []
-
+        selected_question = []
         for data in reader:
             item = dict(data)
             if id is not None and id == item["id"]:
-                return item
+                selected_question.append(item)
             table.append(item)
-        return table
+        if len(selected_question) > 0:
+            return selected_question
+        else:
+            return table
+
+def convert_time(time):
+    normal_time = datetime.fromtimestamp(time)
+    return normal_time
 
 
 def get_headers(csv_file):
@@ -43,4 +50,3 @@ def get_id_by_title(csv_file, title):
             return line['id']
 
 
-print(get_id_by_title("sample_data/question.csv", "How to make lists in Python?"))

@@ -3,6 +3,7 @@ import util
 import data_manager
 import connection
 import csv
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def add_question():
         with open('sample_data/question.csv', 'a') as questions:
             newquestion = csv.DictWriter(questions, fieldnames=headers)
             newquestion.writerow(
-                {'id': util.generate_random(generated_ids), 'submission_time': '1493015438',
+                {'id': util.generate_random(generated_ids), 'submission_time': 'Couldnt do',
                  'view_number': '0', 'vote_number': '0',
                  'title': request.form['title'],
                  'message': request.form['message']})
@@ -36,9 +37,9 @@ def add_question():
 
 @app.route("/question/<question_id>")
 def display_question(question_id):
-    my_data = data_manager.get_data_from_csv(csv_file="sample_data/question.csv", id=id)
+    my_data = data_manager.get_data_from_csv(csv_file="sample_data/question.csv", id=question_id)
 
-    return render_template('question-page.html', data=my_data)
+    return render_template('q-and-a.html', data=my_data)
 
 
 @app.route("/question/<question_id>/new_answer")
