@@ -2,16 +2,20 @@
 <html>
 <head>
     <title>Home</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
-    <h1>HOME</h1>
-    <table>
+    <table align="center">
 
         <tr>
+        <td colspan="4"><h1>@AskMate</h1></td>
+        </tr>
 
+        <tr>
         {% for i in headers %}
             <th>{{ i }}</th>
         {% endfor %}
