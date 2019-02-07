@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, redirect, request, url_for, make_response
 import util
 import data_manager
@@ -10,10 +9,10 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/list')
 def home():
-    headers = ["Date", "Title", "Question", "Show"]
-    table = {"SFG", "2018-10-11 13:12", "Title", "Question", "Watch"}
+    header = data_manager.get_headers("sample_data/question.csv")
 
-    return render_template("home.html", table=table, headers=headers)
+    table = data_manager.get_data_from_csv("sample_data/question.csv", id=None)
+    return render_template("home.html", questions=table, headers=header)
 
 
 @app.route('/add-question', methods=['GET', 'POST'])
