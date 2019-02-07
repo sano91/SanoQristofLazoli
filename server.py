@@ -6,7 +6,7 @@ import csv
 
 app = Flask(__name__)
 
-
+generated_ids = []
 
 @app.route('/')
 @app.route('/list')
@@ -19,12 +19,14 @@ def home():
 
 @app.route('/add-question', methods=['GET', 'POST'])
 def add_question():
-    headers = ['id', 'submission_time', 'view_number', 'title', 'message', 'image']
+    headers = ['id', 'submission_time', 'view_number', 'vote_number', 'title', 'message', 'image']
     if request.method == 'POST':
         with open('sample_data/question.csv', 'a') as questions:
             newquestion = csv.DictWriter(questions, fieldnames=headers)
             newquestion.writerow(
-                {'id': '23232', 'submission_time': '1493015438', 'view_number': '0', 'title': request.form['title'],
+                {'id': util.generate_random(generated_ids), 'submission_time': '1493015438',
+                 'view_number': '0', 'vote_number': '0',
+                 'title': request.form['title'],
                  'message': request.form['message']})
 
         return redirect('/')
@@ -33,8 +35,10 @@ def add_question():
 
 
 @app.route("/question/<question_id>")
-def display_question(id):
-    pass
+def display_question(question_id):
+    my_data = data_manager.get_data_from_csv(csv_file="sample_data/question.csv", id=id)
+
+    return render_template('question-page.html', data=my_data)
 
 
 @app.route("/question/<question_id>/new_answer")
