@@ -1,15 +1,18 @@
-<!DOCtype html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type='text/css' href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body>
+
     <h1>HOME</h1>
     <table>
-
+        <form action="/add-question">
+        <input type="submit" value="Add new question" />
+        </form>
         <tr>
 
         {% for i in headers %}

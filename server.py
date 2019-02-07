@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, url_for, make_respo
 import util
 import data_manager
 import connection
+import csv
 
 app = Flask(__name__)
 
@@ -17,7 +18,17 @@ def home():
 
 @app.route('/add-question', methods=['GET', 'POST'])
 def add_question():
+    headers = ['id', 'submission_time', 'view_number', 'title', 'message', 'image']
+    if request.method == 'POST':
+        with open('sample_data/question.csv', 'a') as questions:
+            newquestion = csv.DictWriter(questions, fieldnames=headers)
+            newquestion.writerow(
+                {'id': '23232', 'submission_time': '1493015438', 'view_number': '0', 'title': request.form['title'],
+                 'message': request.form['message']})
 
+        return redirect('/')
+
+    return render_template('add-question.html')
 
 
 @app.route("/question/<question_id>")

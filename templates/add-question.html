@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="UTF-8">
+    <title>Add new story</title>
+</head>
+<body>
+    <h1>Add user story:</h1>
+
+    <form action='/add-question' method="post">
+        <p><label for="title">Title:</label>
+        </p>
+        <p>
+        <input id="title" name="title" required>{{  title  }}
+        </p>
+
+        <p>
+        <label for="message">Story:</label>
+        </p>
+        <p>
+        <textarea id="message" name="message" rows="10" cols=60" required>{{  message  }}</textarea>
+        </p>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</body>
+
+</html>
