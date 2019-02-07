@@ -2,27 +2,37 @@
 <head xmlns="http://www.w3.org/1999/html">
     <meta charset="UTF-8">
     <title>Add new story</title>
+    <link rel="stylesheet" type="text/css" href="/static/add_style.css">
 </head>
 <body>
-    <h1>Add user story:</h1>
+    <table align="center">
+        <tr>
+            <td><h1>Add user story:</h1></td>
+        </tr>
 
     <form action='/add-question' method="post">
-        <p><label for="title">Title:</label>
-        </p>
-        <p>
-        <input id="title" name="title" required>{{  title  }}
-        </p>
 
-        <p>
-        <label for="message">Story:</label>
-        </p>
-        <p>
-        <textarea id="message" name="message" rows="10" cols=60" required>{{  message  }}</textarea>
-        </p>
+        <tr>
+            <th><label for="title">Title:</label></th>
+        </tr>
 
-        <input type="submit" value="Submit">
+        <tr>
+            <th><input id="title" name="title" rows="3" cols="100" required>{{  title  }}</th>
+        </tr>
+
+        <tr>
+            <th><label for="message">Story:</label></th>
+        </tr>
+
+        <tr>
+            <th><textarea id="message" name="message" rows="10" cols=100" required>{{  message  }}</textarea></th>
+        </tr>
+
+        <tr>
+            <th><input type="submit" value="Submit"></th>
+        </tr>
 
     </form>
+    </table>
 </body>
-
 </html>
