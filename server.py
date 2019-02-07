@@ -1,4 +1,4 @@
-import POST as POST
+
 from flask import Flask, render_template, redirect, request, url_for, make_response
 import util
 import data_manager
@@ -9,13 +9,14 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/list')
 def home():
-    headers = ["Date", "Title", "Question", "Show"]
-    table = {"SFG": "2018-10-11 13:12", "Title", "Question", "Watch"}
-    return render_template("home.html", table=table, headers=headers)
+    header = data_manager.get_headers("sample_data/question.csv")
+
+    table = data_manager.get_data_from_csv("sample_data/question.csv")
+    return render_template("home.html", table=table, header=header)
 
 
 
-@app.route('/add-question', method=['GET', 'POST'])
+@app.route('/add-question', methods=['GET', 'POST'])
 def add_question():
     pass
 
@@ -27,9 +28,9 @@ def display_question(id):
 def give_answer(id):
     pass
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     app.run(
         host='0.0.0.0',
-        port=6000,
+        port=5000,
         debug=True,
     )
