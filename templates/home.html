@@ -13,7 +13,7 @@
     <table align="center">
 
         <tr>
-        <td colspan="4"><h1>@AskMate</h1></td>
+        <td colspan="4"><h1>@SanoQristofLazoli</h1></td>
         </tr>
 
 
@@ -23,9 +23,10 @@
         <input type="submit" value="Add new question" />
         </form>
         <tr>
-        {% for i in headers %}
-            <th>{{ i }}</th>
-        {% endfor %}
+            <th>Submission time</th>
+            <th>View number</th>
+            <th>Vote number</th>
+            <th>Title</th>
         </tr>
 
         {% for question in questions %}

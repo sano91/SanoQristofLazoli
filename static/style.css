@@ -14,9 +14,9 @@
 
         table, th, td
         {
-            border: 10px solid black;
+            border: 5px solid black;
             border-collapse: collapse;
-            opacity: 0.45;
+            opacity: 0.75;
         }
 
         th, td
