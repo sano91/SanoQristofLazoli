@@ -1,15 +1,20 @@
-
         body
-            {
+        {
             font-family: sans-serif;
             background-image: url(http://www.planwallpaper.com/static/images/6909249-black-hd-background.jpg);
             background-size: cover;
             background-attachment: fixed;
-            }
+        }
+
+        table, th, td
+        {
+            border: 1px solid black;
+            opacity: 0.75;
+        }
 
         table
         {
-            width: 100%;
+            width: auto;
         }
 
         table, th, td
@@ -24,6 +29,22 @@
             padding: 5px;
             text-align: center;
         }
+
+        th
+        {
+            background-color: #a70000;
+            color: white;
+        }
+
+        tr:nth-child(even)
+        {
+            background-color: #e8e8e8;
+        }
+
+        tr:nth-child(odd)
+        {
+            background-color: white;
+
 
         th
         {
