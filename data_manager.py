@@ -16,7 +16,7 @@ def write_to_csv(csv_file, data):
     return None
 
 '''
-def get_data_from_csv(csv_file, id=None):
+def get_data_from_csv(csv_file="sample_data/question.csv", id=None):
     with open(csv_file, "r") as f:
         reader = csv.DictReader(f)
         table = []
@@ -29,18 +29,19 @@ def get_data_from_csv(csv_file, id=None):
         return table
 
 
-d = get_data_from_csv("sample_data/question.csv", id="2")
-print(d["view_number"])
+d = get_data_from_csv("sample_data/question.csv", id=None)
+print(d[1]["vote_number"])
 
 
 def get_headers(csv_file):
     with open(csv_file, "r") as file:
         headers = file.readline()
         header = headers.split(",")
-    return header
+    return header[1:5]
 
-def get_header(headers):
-    return headers[1:5]
+print(get_headers("sample_data/question.csv"))
+
+
 
 
 

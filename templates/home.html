@@ -9,12 +9,22 @@
 <body>
     <h1>HOME</h1>
     <table>
-        <h1>Home</h1>
+
+        <tr>
+
         {% for i in headers %}
-        <th>{{ i }}</th>
-        {% for i in range(3) %}<tr><td>{{ table["submission_time"] }}</td><td>{{ table["view_number"] }}</td><td></td></tr>
+            <th>{{ i }}</th>
+        {% endfor %}
+        </tr>
 
-
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.submission_time }}</td>
+            <td>{{ question.view_number }}</td>
+            <td>{{ question.vote_number }}</td>
+            <td>{{ question.title }}</td>
+        </tr>
+        {% endfor %}
 
 
     </table>
