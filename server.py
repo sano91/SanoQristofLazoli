@@ -17,7 +17,7 @@ def home():
 
 @app.route('/add-question', methods=['GET', 'POST'])
 def add_question():
-    pass
+
 
 
 @app.route("/question/<question_id>")
