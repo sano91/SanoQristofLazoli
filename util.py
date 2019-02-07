@@ -7,7 +7,7 @@ def random_id_generator(size, chars=string.ascii_uppercase + string.digits):
 
 
 def check_ID(table, id):
-    if id in table.keys():
+    if id in table:
         return 1
 
 
