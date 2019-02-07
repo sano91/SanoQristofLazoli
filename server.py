@@ -13,7 +13,7 @@ generated_ids = []
 @app.route('/list')
 def home():
     header = data_manager.get_headers("sample_data/question.csv")
-
+    header = header[1:5]
     table = data_manager.get_data_from_csv("sample_data/question.csv", id=None)
     return render_template("home.html", questions=table, headers=header)
 
@@ -38,8 +38,11 @@ def add_question():
 @app.route("/question/<question_id>")
 def display_question(question_id):
     my_data = data_manager.get_data_from_csv(csv_file="sample_data/question.csv", id=question_id)
+    question_header = data_manager.get_headers("sample_data/question.csv")
+    answers = data_manager.get_data_from_csv(csv_file="sample_data/answer.csv", id=question_id)
+    answers_headers = data_manager.get_headers("sample_data/answer.csv")
 
-    return render_template('q-and-a.html', data=my_data)
+    return render_template('q-and-a.html', question=my_data, questionheader=question_header, answer=answers, answerheader=answers_headers)
 
 
 @app.route("/question/<question_id>/new_answer")
