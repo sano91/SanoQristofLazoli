@@ -1,15 +1,13 @@
 import csv
 
 
-def open_question(csv_file):
+def open_file(csv_file):
     with open(csv_file, "r") as f:
-        opened_file = f.read()
-        opened_file = opened_file.split('\n')
+        opened_file = csv.DictReader(f)
+        main_file= []
+        for line in opened_file:
+            main_file.append(dict(line))
 
+    return main_file
 
-        for lines in opened_file:
-            print(lines)
-
-
-
-open_question("sample_data/answer.csv")
+open_file("sample_data/question.csv")
