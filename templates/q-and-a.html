@@ -1,0 +1,52 @@
+<!DOCtype html>
+<html>
+<head>
+    <title>Home</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+<h1>Question&Answers</h1>
+<button type="button"><a href="/question/{{ question.id }}/new_answer"</button>
+<div class="question-block">
+    <table>
+        <tr>
+            {% for i in questionheader %}
+                <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.submission_time }}</td>
+            <td>{{ question.view_number }}</td>
+            <td>{{ question.vote_number }}</td>
+            <td>{{ question.title }}</td>
+            <td>{{ question.message }}</td>
+            <td>{{ question.image }}</td>
+        </tr>
+    </table>
+</div>
+<div class="answerblock">
+    <table>
+        <tr>
+            {% for i in answerheader %}
+                <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+        {% for answe in answer %}
+        <tr>
+            <td>{{ answer.id }}</td>
+            <td>{{ answer.submission_time }}</td>
+            <td>{{ answer.view_number }}</td>
+            <td>{{ answer.vote_number }}</td>
+            <td>{{ answer.title }}</td>
+            <td>{{ answer.message }}</td>
+            <td>{{ answer.image }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>

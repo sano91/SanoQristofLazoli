@@ -33,7 +33,7 @@ def get_headers(csv_file):
     with open(csv_file, "r") as file:
         headers = file.readline()
         header = headers.split(",")
-    return header[1:5]
+    return header
 
 
 def get_id_by_title(csv_file, title):
@@ -43,4 +43,8 @@ def get_id_by_title(csv_file, title):
             return line['id']
 
 
+
+
 print(get_id_by_title("sample_data/question.csv", "How to make lists in Python?"))
+
+
