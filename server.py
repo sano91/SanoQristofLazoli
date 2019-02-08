@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for, make_response
+from flask import Flask, render_template, redirect, request
 import util
 import data_manager
 import connection
@@ -42,12 +42,19 @@ def display_question(question_id):
     answers = data_manager.get_data_from_csv(csv_file="sample_data/answer.csv", id=question_id)
     answers_headers = data_manager.get_headers("sample_data/answer.csv")
 
-    return render_template('q-and-a.html', question=my_data, questionheader=question_header, answer=answers, answerheader=answers_headers)
+    return render_template('q-and-a.html', question=my_data, questionheader=question_header, answer=answers,
+                           answerheader=answers_headers)
 
 
-@app.route("/question/<question_id>/new_answer")
+@app.route("/question/<id>/new-answer", methods=["GET", "POST"])
 def give_answer(id):
-    pass
+    if request.method == "POST":
+
+        answer_message = request.form["message"]
+        new_answer = data_manager.create_right_format(id, answer_message, "answer")
+        data_manager.write_to_the_file(new_answer, "sample_date/answer.csv", "answer")
+        return redirect("/")
+    return render_template("answer.html")
 
 
 if __name__ == "__main__":
