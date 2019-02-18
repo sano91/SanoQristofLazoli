@@ -24,12 +24,10 @@ def get_data_from_csv(csv_file="sample_data/question.csv", id=None):
         for data in reader:
             item = dict(data)
             if id is not None and id == item["id"]:
-                selected_question.append(item)
+                return item
             table.append(item)
-        if len(selected_question) > 0:
-            return selected_question
-        else:
-            return table
+
+        return table
 
 
 def convert_time(time):
@@ -76,12 +74,5 @@ def write_to_the_file(data, file, type):
             newquestion = csv.DictWriter(questions, fieldnames=headers_a)
             newquestion.writerow(data)
 
-
-answers = get_data_from_csv(csv_file="sample_data/answer.csv", id="1")
-print(answers)
-for key in answers.keys():
-    print(answers[key])
-
-print(get_id_by_title("sample_data/question.csv", "How to make lists in Python?"))
 
 

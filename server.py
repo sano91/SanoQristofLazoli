@@ -52,7 +52,7 @@ def give_answer(id):
 
         answer_message = request.form["message"]
         new_answer = data_manager.create_right_format(id, answer_message, "answer")
-        data_manager.write_to_the_file(new_answer, "sample_date/answer.csv", "answer")
+        data_manager.write_to_the_file(new_answer, "sample_data/answer.csv", "answer")
         return redirect("/")
     return render_template("answer.html")
 
